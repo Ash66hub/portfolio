@@ -1,0 +1,64 @@
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  position: relative;
+}
+
+/* Wrappers for transition group items */
+.layout-item {
+  display: flex;
+  height: 100%;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-item {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.content-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+/* FLIP Animation for Sidebar Stacking */
+.stack-move {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Transitions for content fade */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .sidebar-item {
+    width: 100%;
+    height: 60px;
+  }
+}
