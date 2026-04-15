@@ -57,8 +57,31 @@
   .app-container {
     flex-direction: column;
   }
+
+  .layout-item {
+    width: 100%;
+    height: auto;
+  }
+
   .sidebar-item {
     width: 100%;
-    height: 60px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+
+  .content-item {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Slide vertically on mobile instead of horizontally */
+  .slide-fade-enter-from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .slide-fade-leave-to {
+    opacity: 0;
+    transform: translateY(-30px);
   }
 }
