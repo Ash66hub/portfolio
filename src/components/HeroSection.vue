@@ -5,7 +5,7 @@ defineEmits(['navigate']);
 <template>
   <section class="hero">
     <div class="hero-content">
-      <h3 class="subtitle">Hello, I am</h3>
+      <h3 class="subtitle">Hi, I am</h3>
       <h1 class="title">
         <span class="first-name">Aswanth</span>
         <span class="full-name">Harilal Bindhu</span>
@@ -16,6 +16,10 @@ defineEmits(['navigate']);
         <button class="btn btn-primary" @click="$emit('navigate', 'Projects')">Projects</button>
         <button class="btn btn-primary" @click="$emit('navigate', 'Contact')">Contact</button>
       </div>
+    </div>
+    
+    <div class="hero-image-container">
+      <img src="../assets/photo.png" class="hero-photo">
     </div>
   </section>
 </template>

@@ -4,11 +4,15 @@
   align-items: center;
   padding-left: 10%;
   background-color: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
   max-width: 90%;
   animation: fadeIn 1s ease-out;
+  position: relative;
+  z-index: 5;
 }
 
 .subtitle {
@@ -84,6 +88,40 @@
   background: var(--color-accent-hover);
 }
 
+.hero-image-container {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%) translateX(50px);
+  opacity: 0;
+  width: 30%;
+  max-width: 450px;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hero-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  /* Use drop-shadow instead of box-shadow to respect transparency */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)) grayscale(0.1) brightness(0.9);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.95);
+}
+
+/* Only show when hovering over the first name specifically */
+.hero:has(.first-name:hover) .hero-image-container {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.hero:has(.first-name:hover) .hero-photo {
+  transform: scale(1);
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6)) grayscale(0) brightness(1);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -92,6 +130,12 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-image-container {
+    display: none;
   }
 }
 

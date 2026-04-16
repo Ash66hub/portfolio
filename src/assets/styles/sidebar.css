@@ -14,29 +14,69 @@
 
 .sidebar.active {
   background-color: var(--bg-sidebar-active);
+  position: relative;
+}
+
+.sidebar.active .label {
+  color: var(--color-accent);
+  text-shadow: 0 0 15px rgba(255, 175, 97, 0.4);
 }
 
 .label-container {
   transform: rotate(90deg);
   white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .label {
   color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: capitalize;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.active .label::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--color-accent);
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from { width: 0; opacity: 0; }
+  to { width: 40px; opacity: 1; }
+}
+
+.sidebar:hover:not(.active) .label {
+  color: var(--text-primary);
+  opacity: 0.8;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    height: 50px;
+    height: 60px;
     border-left: none;
     border-right: none;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .sidebar.active {
+    background-color: var(--bg-sidebar-active);
   }
 
   .label-container {
@@ -44,6 +84,12 @@
   }
 
   .label {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .sidebar.active .label::after {
+    bottom: -6px;
+    width: 30px;
   }
 }
