@@ -68,7 +68,17 @@
 
 .cta-group {
   display: flex;
+  flex-direction: column;
   gap: 1.5rem;
+}
+
+.primary-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.secondary-actions {
+  display: flex;
 }
 
 .btn {
@@ -86,6 +96,26 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 175, 97, 0.5);
   background: var(--color-accent-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-secondary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.resume-btn svg {
+  color: #ffaf61;
 }
 
 .hero-image-container {
@@ -169,9 +199,20 @@
 
 
   .cta-group {
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .primary-actions {
     gap: 1rem;
     justify-content: center;
   }
+
+  .secondary-actions {
+    justify-content: center;
+  }
+
   .btn {
     padding: 0.7rem 2rem;
     font-size: 1rem;
