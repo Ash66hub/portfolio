@@ -18,8 +18,9 @@
 }
 
 .sidebar.active .label {
-  color: var(--color-accent);
-  text-shadow: 0 0 15px rgba(255, 175, 97, 0.4);
+  background: var(--color-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .label-container {

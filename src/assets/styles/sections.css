@@ -87,7 +87,7 @@
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
   padding: 2rem;
@@ -99,8 +99,8 @@
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: #555;
+  background: var(--card-hover-bg);
+  border-color: var(--text-secondary);
   transform: translateY(-5px);
 }
 
@@ -108,11 +108,11 @@
   width: 56px;
   height: 56px;
   border-radius: 1rem;
-  background: rgba(255, 175, 97, 0.1);
+  background: var(--bg-sidebar-active);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffaf61;
+  color: var(--text-primary);
   transition: all 0.4s ease;
 }
 

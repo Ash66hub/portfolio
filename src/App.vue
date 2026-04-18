@@ -5,6 +5,7 @@
   import HeroSection from './components/HeroSection.vue'
   import ProjectsSection from './components/ProjectsSection.vue'
   import ContactSection from './components/ContactSection.vue'
+  import ThemeToggle from './components/ThemeToggle.vue'
 
   const sections = ['Main', 'Projects', 'Contact']
   const activeSection = ref('Main')
@@ -59,6 +60,7 @@
       </div>
     </div>
   </TransitionGroup>
+  <ThemeToggle />
 </template>
 
 <style src="./assets/styles/layout.css"></style>
