@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import resumeUrl from '../assets/resume/CV_Aswanth.pdf';
+const resumeUrl = 'https://awntqvnovwpwyxiqexfr.supabase.co/storage/v1/object/public/portfolio-CV/CV_Aswanth.pdf';
 defineEmits(['navigate']);
 </script>
 
