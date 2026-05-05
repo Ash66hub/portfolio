@@ -83,22 +83,22 @@ const timers: Record<string, ReturnType<typeof setInterval>> = {}
 
 function goTo(projectId: string, index: number) {
   const state = carouselState[projectId]
-  if (state.transitioning) return
+  if (!state || state.transitioning) return
   state.transitioning = true
   state.index = index
   resetAutoplay(projectId)
-  setTimeout(() => { state.transitioning = false }, 500)
+  setTimeout(() => { if (state) state.transitioning = false }, 500)
 }
 
 function next(projectId: string) {
   const project = projects.find((p) => p.id === projectId)!
-  goTo(projectId, (carouselState[projectId].index + 1) % project.images.length)
+  goTo(projectId, (carouselState[projectId]!.index + 1) % project.images.length)
 }
 
 function prev(projectId: string) {
   const project = projects.find((p) => p.id === projectId)!
   const len = project.images.length
-  goTo(projectId, (carouselState[projectId].index - 1 + len) % len)
+  goTo(projectId, (carouselState[projectId]!.index - 1 + len) % len)
 }
 
 function resetAutoplay(projectId: string) {
@@ -132,7 +132,7 @@ onUnmounted(() => {
             <div class="carousel-viewport">
               <div
                 class="carousel-track"
-                :style="{ transform: `translateX(-${carouselState[project.id].index * 100}%)` }"
+                :style="{ transform: `translateX(-${carouselState[project.id]!.index * 100}%)` }"
               >
                 <div
                   v-for="(img, i) in project.images"
@@ -161,7 +161,7 @@ onUnmounted(() => {
               <button
                 v-for="(_, i) in project.images"
                 :key="i"
-                :class="['dot', { active: carouselState[project.id].index === i }]"
+                :class="['dot', { active: carouselState[project.id]!.index === i }]"
                 @click="goTo(project.id, i)"
                 :aria-label="`Go to image ${i + 1}`"
               />
